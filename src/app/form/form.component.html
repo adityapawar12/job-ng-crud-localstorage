@@ -1,0 +1,52 @@
+<form action="">
+  <div class="left">
+    <label class="label" for="firstName">First Name : </label>
+    <input class="input" [(ngModel)]="firstName" name="firstName" type="text" />
+  </div>
+
+  <div class="right">
+    <label class="label" for="lastName">Last Name : </label>
+    <input class="input" [(ngModel)]="lastName" name="lastName" type="text" />
+  </div>
+
+  <div class="left">
+    <label class="label" for="mobile">Mobile No. : </label>
+    <input class="input" [(ngModel)]="mob" name="mobile" type="tel" />
+  </div>
+
+  <div class="right">
+    <label class="label" for="dob">Date of Birth : </label>
+    <input class="input" [(ngModel)]="dob" name="dob" type="date" />
+  </div>
+
+  <label class="label" for="email">E-mail : </label>
+  <input class="input" [(ngModel)]="email" name="email" type="email" />
+
+  <button *ngIf="editing" class="button" (click)="onEditSave()">edit</button>
+  <button *ngIf="!editing" class="button" (click)="onCreateSave()">
+    create
+  </button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Nane</th>
+    <th>Mobile</th>
+    <th>DOB</th>
+    <th>Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let info of information; let i = index">
+    <th>{{ info.id }}</th>
+    <th>{{ info.firstName }}</th>
+    <th>{{ info.lastName }}</th>
+    <th>{{ info.mob }}</th>
+    <th>{{ info.dob }}</th>
+    <th>{{ info.email }}</th>
+    <th><button (click)="onEdit(i)">edit</button></th>
+    <th><button (click)="onDelete(i)">delete</button></th>
+  </tr>
+</table>
